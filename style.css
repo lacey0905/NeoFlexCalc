@@ -1,0 +1,109 @@
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #f0f4f7;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 400px;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+label {
+  display: block;
+  text-align: left;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* 계산하기 버튼 */
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+/* 계산하기 버튼 - 파란색 */
+button:first-of-type {
+  background-color: #007bff; /* 파란색 */
+  color: white;
+}
+
+button:first-of-type:hover {
+  background-color: #0056b3; /* 진한 파란색 */
+}
+
+/* 초기화 버튼 - 빨간색 */
+button:last-of-type {
+  background-color: #dc3545; /* 빨간색 */
+  color: white;
+}
+
+button:last-of-type:hover {
+  background-color: #c82333; /* 진한 빨간색 */
+}
+
+h2 {
+  font-size: 20px;
+  color: #333;
+  margin-top: 25px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.result-time {
+  color: #007bff; /* 파란색으로 변경 */
+  font-size: 40px;
+  font-weight: 700;
+  display: block;
+  margin-top: 10px;
+}
