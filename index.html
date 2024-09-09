@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>초과 근로 시간 계산기</title>
+
+    <!-- Open Graph 이미지 설정 -->
+    <meta property="og:title" content="초과 근로 시간 계산기" />
+    <meta
+      property="og:description"
+      content="당신의 초과 근로 시간을 계산하세요."
+    />
+    <meta property="og:image" content="og.jpg" />
+    <meta property="og:type" content="website" />
+
+    <!-- 파비콘 설정 -->
+    <link rel="icon" href="favicon.png" type="image/png" />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -25,10 +38,11 @@
         <label for="remainingDays">잔여일:</label>
         <input type="number" id="remainingDays" value="13" required /><br />
 
-        <button type="button" onclick="calculateOvertime()">계산하기</button>
         <button type="button" onclick="resetForm()">초기화</button>
+        <button type="button" onclick="calculateOvertime()">계산하기</button>
       </form>
 
+      <!-- 결과 부분 -->
       <p id="result">결과가 여기에 표시됩니다.</p>
     </div>
 
@@ -47,29 +61,36 @@
         if (savedRemainingDays) {
           document.getElementById("remainingDays").value = savedRemainingDays;
         }
+
+        // 로컬스토리지에 값이 모두 있으면 자동으로 계산 결과 출력
+        if (savedActualHours && savedApprovedTime && savedRemainingDays) {
+          calculateOvertime(); // 자동 계산 실행
+        }
       };
 
+      // 유효성 검사 및 계산 함수
       function calculateOvertime() {
         const actualHours = document.getElementById("actualHours").value;
-        const approvedTime = document
-          .getElementById("approvedTime")
-          .value.split(":");
-        const approvedHours = parseFloat(approvedTime[0]);
-        const approvedMinutes = parseFloat(approvedTime[1]);
-        let remainingDays = document.getElementById("remainingDays").value;
+        const approvedTime = document.getElementById("approvedTime").value;
+        const remainingDays = document.getElementById("remainingDays").value;
+
+        if (!actualHours || !approvedTime || !remainingDays) {
+          alert("모든 필드를 입력해 주세요.");
+          return;
+        }
+
+        const approvedTimeSplit = approvedTime.split(":");
+        const approvedHours = parseFloat(approvedTimeSplit[0]);
+        const approvedMinutes = parseFloat(approvedTimeSplit[1]);
 
         localStorage.setItem("actualHours", actualHours);
-        localStorage.setItem(
-          "approvedTime",
-          document.getElementById("approvedTime").value
-        );
+        localStorage.setItem("approvedTime", approvedTime);
         localStorage.setItem("remainingDays", remainingDays);
 
         const approvedTotal = approvedHours + approvedMinutes / 60;
         const remainingHours = actualHours - approvedTotal;
-        remainingDays -= 1;
+        const totalWorkingHours = (remainingDays - 1) * 8;
 
-        const totalWorkingHours = remainingDays * 8;
         const overtimeNeeded = remainingHours - totalWorkingHours;
 
         const hours = Math.floor(Math.abs(overtimeNeeded));
@@ -77,19 +98,19 @@
 
         const resultElement = document.getElementById("result");
         if (overtimeNeeded > 0) {
-          resultElement.innerHTML = `앞으로 <span class="result-time">${hours}시간 ${minutes}분</span>을 더 초과 근무해야 마지막 날에 쉴 수 있습니다.`;
+          resultElement.innerHTML = `앞으로 <span class="result-time positive">${hours}시간 ${minutes}분</span>을 더 초과 근무해야 마지막 날에 쉴 수 있습니다.`;
         } else {
-          resultElement.innerHTML =
-            "초과 근로가 필요하지 않습니다! 마지막 날에 쉴 수 있습니다.";
+          resultElement.innerHTML = `이미 넌 마지막 날에 쉴 수 있고 뿐만 아니라 <span class="result-time negative">${hours}시간 ${minutes}분</span>을 더 초과근로 했어!`;
         }
       }
 
+      // 리셋 함수
       function resetForm() {
         if (confirm("정말로 초기화 할거야?")) {
-          localStorage.clear();
-          document.getElementById("workForm").reset();
+          localStorage.clear(); // 로컬 스토리지 초기화
+          document.getElementById("workForm").reset(); // 입력값 초기화
           document.getElementById("result").innerHTML =
-            "결과가 여기에 표시됩니다.";
+            "결과가 여기에 표시됩니다."; // 결과 초기화
         }
       }
     </script>
