@@ -1,7 +1,7 @@
-/* 기본 스타일 */
+/* 기본 스타일 - 다크 모드 */
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
-  background-color: #f0f4f7;
+  background-color: #1e1e1e; /* 어두운 배경 */
   margin: 0;
   padding: 0;
   display: flex;
@@ -11,9 +11,9 @@ body {
 }
 
 .container {
-  background-color: white;
+  background-color: #2c2c2c; /* 다크 컨테이너 배경 */
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* 어두운 그림자 */
   padding: 30px;
   width: 400px;
   text-align: center;
@@ -21,7 +21,7 @@ body {
 }
 
 h1 {
-  color: #333;
+  color: #f0f0f0; /* 밝은 텍스트 */
   font-size: 26px;
   margin-bottom: 20px;
   font-weight: 600;
@@ -31,7 +31,7 @@ label {
   display: block;
   text-align: left;
   font-size: 15px;
-  color: #555;
+  color: #b0b0b0; /* 중간 밝기의 텍스트 */
   margin-bottom: 5px;
 }
 
@@ -39,11 +39,17 @@ input {
   width: 100%;
   padding: 12px;
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #555; /* 어두운 테두리 */
   border-radius: 5px;
   font-size: 15px;
+  background-color: #1e1e1e; /* 인풋 배경 */
+  color: #f0f0f0; /* 텍스트 */
   box-sizing: border-box;
   transition: border-color 0.3s ease;
+}
+
+input::placeholder {
+  color: #888; /* 플레이스홀더 텍스트 색 */
 }
 
 input:focus {
@@ -64,33 +70,33 @@ button {
 
 /* 초기화 버튼 - 빨간색 */
 button:first-of-type {
-  background-color: #dc3545; /* 빨간색 */
+  background-color: #b02a37;
   color: white;
 }
 
 button:first-of-type:hover {
-  background-color: #c82333; /* 진한 빨간색 */
+  background-color: #a0212d;
 }
 
 /* 계산하기 버튼 - 파란색 */
 button:last-of-type {
-  background-color: #007bff; /* 파란색 */
+  background-color: #0066cc;
   color: white;
 }
 
 button:last-of-type:hover {
-  background-color: #0056b3; /* 진한 파란색 */
+  background-color: #00509e;
 }
 
 /* 결과 텍스트 */
 p {
   font-size: 16px;
-  color: #555;
+  color: #f0f0f0;
   padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
+  background-color: #3a3a3a; /* 결과 배경 */
+  border: 1px solid #444;
   border-radius: 5px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   margin-top: 20px;
   line-height: 1.6;
   font-weight: 500;
@@ -98,7 +104,7 @@ p {
 
 /* 초과 근로 시간이 남았을 때 */
 .result-time.positive {
-  color: #007bff; /* 파란색 */
+  color: #1e90ff; /* 밝은 파란색 */
   font-size: 40px;
   font-weight: 700;
   display: block;
