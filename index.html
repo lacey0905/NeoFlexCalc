@@ -24,11 +24,11 @@
       <h1>초과 근로 시간 계산기</h1>
       <form id="workForm">
         <label for="actualHours">이번 달 근로시간 (시간):</label>
-        <input type="number" id="actualHours" required />
+        <input type="tel" id="actualHours" required />
 
         <label for="approvedTime">인정 근로시간 (HH:MM):</label>
         <input
-          type="text"
+          type="tel"
           id="approvedTime"
           placeholder="예: 41:45"
           pattern="[0-9]{1,2}:[0-9]{2}"
@@ -36,7 +36,7 @@
         />
 
         <label for="remainingDays">잔여일:</label>
-        <input type="number" id="remainingDays" value="13" required /><br />
+        <input type="tel" id="remainingDays" value="13" required /><br />
 
         <button type="button" onclick="resetForm()">초기화</button>
         <button type="button" onclick="calculateOvertime()">계산하기</button>
@@ -66,6 +66,16 @@
         if (savedActualHours && savedApprovedTime && savedRemainingDays) {
           calculateOvertime(); // 자동 계산 실행
         }
+
+        const input = document.getElementById("approvedTime");
+
+        input.addEventListener("input", (e) => {
+          let value = e.target.value.replace(/\D/g, ""); // 숫자 이외의 문자 제거
+          if (value.length >= 3) {
+            value = value.slice(0, 2) + ":" + value.slice(2); // 3번째 위치에 ':' 추가
+          }
+          e.target.value = value;
+        });
       };
 
       // 유효성 검사 및 계산 함수
