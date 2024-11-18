@@ -1,7 +1,7 @@
-/* 기본 스타일 - 다크 모드 */
+/* 기존 스타일 유지 */
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
-  background-color: #1e1e1e; /* 어두운 배경 */
+  background-color: #1e1e1e;
   margin: 0;
   padding: 0;
   display: flex;
@@ -11,9 +11,9 @@ body {
 }
 
 .container {
-  background-color: #2c2c2c; /* 다크 컨테이너 배경 */
+  background-color: #2c2c2c;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* 어두운 그림자 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   padding: 30px;
   width: 400px;
   text-align: center;
@@ -21,7 +21,7 @@ body {
 }
 
 h1 {
-  color: #f0f0f0; /* 밝은 텍스트 */
+  color: #f0f0f0;
   font-size: 26px;
   margin-bottom: 20px;
   font-weight: 600;
@@ -31,7 +31,7 @@ label {
   display: block;
   text-align: left;
   font-size: 15px;
-  color: #b0b0b0; /* 중간 밝기의 텍스트 */
+  color: #b0b0b0;
   margin-bottom: 5px;
 }
 
@@ -39,22 +39,55 @@ input {
   width: 100%;
   padding: 12px;
   margin-bottom: 20px;
-  border: 1px solid #555; /* 어두운 테두리 */
+  border: 1px solid #555;
   border-radius: 5px;
   font-size: 15px;
-  background-color: #1e1e1e; /* 인풋 배경 */
-  color: #f0f0f0; /* 텍스트 */
+  background-color: #1e1e1e;
+  color: #f0f0f0;
   box-sizing: border-box;
   transition: border-color 0.3s ease;
 }
 
 input::placeholder {
-  color: #888; /* 플레이스홀더 텍스트 색 */
+  color: #888;
 }
 
 input:focus {
   border-color: #007bff;
   outline: none;
+}
+
+.time-table {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 새로운 시간-분 입력 필드 디자인 */
+#approvedHours,
+#approvedMinutes {
+  width: 68px; /* 고정된 폭 */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  box-sizing: border-box;
+  text-align: center; /* 중앙 정렬 */
+}
+
+#approvedHours:focus,
+#approvedMinutes:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+div span {
+  color: #b0b0b0;
+  font-size: 14px;
+  margin: 0 5px;
 }
 
 /* 버튼 스타일 */
@@ -68,7 +101,6 @@ button {
   margin: 5px;
 }
 
-/* 초기화 버튼 - 빨간색 */
 button:first-of-type {
   background-color: #b02a37;
   color: white;
@@ -78,7 +110,6 @@ button:first-of-type:hover {
   background-color: #a0212d;
 }
 
-/* 계산하기 버튼 - 파란색 */
 button:last-of-type {
   background-color: #0066cc;
   color: white;
@@ -93,7 +124,7 @@ p {
   font-size: 16px;
   color: #f0f0f0;
   padding: 15px;
-  background-color: #3a3a3a; /* 결과 배경 */
+  background-color: #3a3a3a;
   border: 1px solid #444;
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -102,18 +133,16 @@ p {
   font-weight: 500;
 }
 
-/* 초과 근로 시간이 남았을 때 */
 .result-time.positive {
-  color: #1e90ff; /* 밝은 파란색 */
+  color: #1e90ff;
   font-size: 40px;
   font-weight: 700;
   display: block;
   margin-top: 10px;
 }
 
-/* 이미 충분히 초과 근로를 한 경우 */
 .result-time.negative {
-  color: #28a745; /* 녹색 */
+  color: #28a745;
   font-size: 40px;
   font-weight: 700;
   display: block;
